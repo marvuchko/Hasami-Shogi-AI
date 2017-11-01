@@ -36,3 +36,11 @@
 (defun isValidMove (table fromI fromJ toI toJ)
     (if (and (or (= fromI toI) (= fromJ toJ)) (equal '(-) (getTableElement table toI toJ))) t))
 
+(defun playsNext (player)
+    (logxor player 1)
+)    
+
+(defun showCurrentPlayer (player)
+    (format t "~%~%~ANa potezu je: igrac ~A" #\tab (+ player 1)) 
+)
+
