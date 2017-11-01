@@ -20,5 +20,5 @@
 
 ; Playing
 
-(defun playMove (table move fromI fromJ toI toJ)
+(defun nextState (table move fromI fromJ toI toJ)
     (setTableElement (setTableElement table move toI toJ) '- fromI fromJ))

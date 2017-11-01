@@ -27,7 +27,7 @@
     (if (not (null table)) 
         (showTableRec (cdr table) (cdr numbers))))
 
-(defun setListElement(lst el n)
+(defun setListElement (lst el n)
     (if (null lst) (if (listp el) el (list el)))
     (if (= n 0) 
         (append (list el) (cdr lst))
