@@ -1,9 +1,9 @@
-(require "./interface.lisp")
+(require "./app.lisp")
 
 (defun main ()
     (ext:run-shell-command "cls")
-    (format t "~%~AUnesi dimenzije table: " #\tab)
-    (initializeGame (read)))    
+    (format t "~%~aUnesi dimenzije table: " #\tab)
+    (initialize-game (read)))    
 
 ;;; Execution
 

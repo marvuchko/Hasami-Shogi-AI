@@ -3,33 +3,35 @@
 
 ;;; Table functions
 
-(defun createTable (n)
-    (createTableRec n n))
+(defun create-table (n)
+    (create-table-rec n n))
 
-(defun getTableElement (table i j)
+(defun get-table-element (table i j)
     (cond 
         ((or (> i (length table)) (< i 0)) table)
         ((or (> j (length table)) (< j 0)) table)
-        (t (getListElement (getListElement table i) j))))
+        (t (get-list-element (get-list-element table i) j))))
 
-(defun setTableElement (table el i j)
+(defun set-table-element (table el i j)
     (cond
         ((or (> i (length table)) (< i 0)) table)
         ((or (> j (length table)) (< j 0)) table)
-        (t (setListElement table (setListElement (getListElement table i) el j) i))))
+        (t (set-list-element table (set-list-element (get-list-element table i) el j) i))))
 
-; Playing
+;;; Playing
 
-(defun nextState (table move fromI fromJ toI toJ)
-    (if (isValidMove table fromJ fromJ toI toJ)
-    (setTableElement (setTableElement table move toI toJ) '- fromI fromJ) table))
+(defun set-next-state (table move fromI fromJ toI toJ)
+    (if (is-valid-move table move fromJ fromJ toI toJ)
+    (set-table-element (set-table-element table move toI toJ) '- fromI fromJ) table))
 
-(defun isValidMove (table fromI fromJ toI toJ)
-    (if (and (or (= fromI toI) (= fromJ toJ)) (equal '(-) (getTableElement table toI toJ))) t))
+(defun is-valid-move (table move fromI fromJ toI toJ)
+    (if (and 
+            (or (= fromI toI) (= fromJ toJ))
+            (equal '(-) (get-table-element table toI toJ))) t))
 
-(defun playsNext (player)
+(defun plays-next (player)
     (logxor player 1))
 
-(defun nextMove (move)
+(defun next-move (move)
     (if (equal move 'X) 'O 'X)) 
 
