@@ -28,5 +28,8 @@
     (if (and (or (= fromI toI) (= fromJ toJ)) (equal '(-) (getTableElement table toI toJ))) t))
 
 (defun playsNext (player)
-    (logxor player 1))    
+    (logxor player 1))
+
+(defun nextMove (move)
+    (if (equal move 'X) 'O 'X)) 
 
