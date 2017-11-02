@@ -6,26 +6,17 @@
 (defun createTable (n)
     (createTableRec n n))
 
-(defun showTable (table nums)
-    (format t "~%~A    " #\tab)
-    (printNumbers nums)
-    (format t "~%~%")
-    (showTableRec table nums))
-
 (defun getTableElement (table i j)
     (cond 
         ((or (> i (length table)) (< i 0)) table)
         ((or (> j (length table)) (< j 0)) table)
-        (t (getListElement (getListElement table i) j)))
-)
-    
+        (t (getListElement (getListElement table i) j))))
 
 (defun setTableElement (table el i j)
     (cond
         ((or (> i (length table)) (< i 0)) table)
         ((or (> j (length table)) (< j 0)) table)
-        (t (setListElement table (setListElement (getListElement table i) el j) i)))
-)
+        (t (setListElement table (setListElement (getListElement table i) el j) i))))
 
 ; Playing
 
@@ -37,10 +28,5 @@
     (if (and (or (= fromI toI) (= fromJ toJ)) (equal '(-) (getTableElement table toI toJ))) t))
 
 (defun playsNext (player)
-    (logxor player 1)
-)    
-
-(defun showCurrentPlayer (player)
-    (format t "~%~%~ANa potezu je: igrac ~A" #\tab (+ player 1)) 
-)
+    (logxor player 1))    
 
