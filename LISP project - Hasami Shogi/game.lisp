@@ -13,11 +13,11 @@
 
 ;gets an element from the i-th row and j-th column of the table 
 (defun get-table-element (table i j)
-        (get-list-element (get-list-element table i) j))
+    (get-list-element (get-list-element table i) j))
 
 ;sets value of an element from the i-th row and j-th column of the table
 (defun set-table-element (table el i j)
-        (set-list-element table (set-list-element (get-list-element table i) el j) i))
+    (set-list-element table (set-list-element (get-list-element table i) el j) i))
 
 ;;;;;;;;;;; Gameplay functions
 
