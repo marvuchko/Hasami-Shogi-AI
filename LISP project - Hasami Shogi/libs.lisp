@@ -2,15 +2,15 @@
 
 (defun create-x-row-rec (n)
     (if (zerop n) '()
-        (cons 'X (create-x-row-rec (1- n)))))
+        (append '(X) (create-x-row-rec (1- n)))))
 
 (defun create-o-row-rec (n)
     (if (zerop n) '()
-        (cons 'O (create-o-row-rec (1- n)))))
+        (append '(O) (create-o-row-rec (1- n)))))
 
 (defun create-free-row-rec (n)
     (if (zerop n) '()
-        (cons '- (create-free-row-rec (1- n)))))
+        (append '(-) (create-free-row-rec (1- n)))))
 
 (defun create-table-rec (n i)
     (if (zerop i) '()
@@ -42,7 +42,7 @@
 
 (defun number-of-x-in-list (lst)
     (if (null lst) 0
-        (+ 0 (if (eq (car lst) 'X) 1 0) (number-of-x-in-list (cdr lst)))))
+        (+ 0 (if (equal (car lst) 'X) 1 0) (number-of-x-in-list (cdr lst)))))
 
 (defun number-of-x (table)
     (if (null table) 0
@@ -50,11 +50,11 @@
 
 (defun number-of-o-in-list (lst)
     (if (null lst) 0
-        (+ 0 (if (eq (car lst) 'O) 1 0) (number-of-o-in-list (cdr lst)))))
+        (+ 0 (if (equal (car lst) 'O) 1 0) (number-of-o-in-list (cdr lst)))))
 
 (defun number-of-o (table)
     (if (null table) 0
-        (+ (number-of-x-in-list (car table)) (number-of-o (cdr table)))))
+        (+ (number-of-o-in-list (car table)) (number-of-o (cdr table)))))
 
 ;;; Number list functions
 
@@ -70,4 +70,6 @@
 ;;; Char functions
 
 (defun char-to-index (ch)
-    (if (and (> (char-code ch) 64) (< (char-code ch) 92)) (- (char-code ch) 65) (- (char-code ch) 97)))
+    (cond
+        ((< (char-code ch) (char-code #\a)) (- (char-code ch) (char-code #\A)))
+        (t (- (char-code ch) (char-code #\a)))))

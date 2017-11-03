@@ -10,14 +10,13 @@
 (defun game-loop (someoneWins table move player dim)
     (ext:run-shell-command "cls")
     (show-table table (create-numbers dim))
-    (shownumber-of-x-figures table)
-    (shownumber-of-o-figures table)
-    (showCurrentPlayer player)
+    (show-number-of-x-figures table)
+    (show-number-of-o-figures table)
+    (show-current-player player)
     (format t "~%~%~aUnesi potez: " #\tab) 
     (cond
         ((not (null someoneWins)) '())
-        (t (game-loop 
-                someoneWins 
-                (set-next-state table move (char-to-index (read-char)) (- (read) 1) (char-to-index (read-char)) (- (read) 1)) 
-                (next-move move) 
-                (plays-next player) dim))))
+        (t (game-loop someoneWins  
+            (set-next-state table move (char-to-index (read-char)) (- (read) 1) (char-to-index (read-char)) (- (read) 1)) 
+            (next-move move) 
+            (plays-next player) dim))))
