@@ -1,5 +1,5 @@
-(require "./libs.lisp")
-(require "./logics.lisp")
+(require "./libraries/libs.lisp")
+(require "./game-logic/logics.lisp")
 
 ;;;;;;;;;;; Table functions
 
@@ -9,7 +9,9 @@
 
 ;tests if input is out of bounds 
 (defun valid-bounds (table i j)
-    (or (or (< i (length table)) (>= i 0)) (or (< j (length table)) (>= j 0))))
+    (or 
+        (or (< i (length table)) (>= i 0)) 
+        (or (< j (length table)) (>= j 0))))
 
 ;gets an element from the i-th row and j-th column of the table 
 (defun get-table-element (table i j)
@@ -35,11 +37,15 @@
         (valid-bounds table fromI fromJ)
         (valid-bounds table toI toJ)))
 
+;user plays the move, user enters the coordinates using standard input
+(defun play-move-user (table figure)
+    (set-next-state table figure (char-to-index (read-char)) (1- (read)) (char-to-index (read-char)) (1- (read))))
+
 ;decides who plays next
 (defun plays-next (player)
     (logxor player 1))
 
-;decides which figures can be played with
+;decides which figures can be played next
 (defun next-figure (figure)
     (if (equal figure 'X) 'O 'X)) 
 

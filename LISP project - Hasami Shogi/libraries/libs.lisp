@@ -84,7 +84,7 @@
 
 ;;;;;;;;;;; Functions for some operations with chars 
 
-;calculates ASCII value of a char
+;calculates index from ASCII chars input
 (defun char-to-index (ch)
     (cond
         ((< (char-code ch) (char-code #\a)) (- (char-code ch) (char-code #\A)))
