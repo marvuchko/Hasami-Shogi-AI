@@ -2,7 +2,7 @@
 
 ;;;;;;;;;;; Console UI functions
 
-;displays the current player in console
+;displays the current player in the console
 (defun show-current-player (player)
     (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ player)))
 
@@ -14,6 +14,7 @@
 (defun show-number-of-o-figures (table)
     (format t "~%~aBroj O figurica je: ~a" #\tab (number-of-o table)))
 
+;displays how move should be played
 (defun show-move-examle ()
     (format t "~aPrimer kako treba uneti potez: b 2 d 2 " #\tab))
 

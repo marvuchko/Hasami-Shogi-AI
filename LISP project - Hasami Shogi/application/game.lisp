@@ -47,5 +47,4 @@
 
 ;decides which figures can be played next
 (defun next-figure (figure)
-    (if (equal figure 'X) 'O 'X)) 
-
+    (if (equal figure 'X) 'O 'X))
