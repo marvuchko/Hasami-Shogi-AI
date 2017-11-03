@@ -28,9 +28,9 @@
 ;displays the table recursively
 (defun show-table-rec (table numbers)
     (if (null table) '()
-        (format t "~a~a  ~a~%" #\tab (code-char (+ 64 (car numbers))) (car table)))
-    (if (not (null table)) 
-        (show-table-rec (cdr table) (cdr numbers))))
+        (progn 
+            (format t "~a~a  ~a~%" #\tab (code-char (+ 64 (car numbers))) (car table))
+            (show-table-rec (cdr table) (cdr numbers)))))
 
 ;sets an element of the list recursively
 (defun set-list-element (lst el n)
@@ -78,8 +78,9 @@
 ;displays a list of numbers from 1 to n recursively
 (defun print-numbers (numbers)
     (if (null numbers) '()
-        (format t "~a " (car numbers)))
-    (if (not (null numbers)) (print-numbers (cdr numbers))))
+        (progn 
+            (format t "~a " (car numbers))
+            (print-numbers (cdr numbers)))))
 
 ;;;;;;;;;;; Functions for some operations with chars 
 
