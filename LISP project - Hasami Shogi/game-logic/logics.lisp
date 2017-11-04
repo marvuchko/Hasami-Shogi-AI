@@ -6,9 +6,13 @@
 (defun detect-sandwich-vertically (table)
     )
 
-;detects sandwich vertically
+;detects sandwich diagonally
 (defun detect-sandwich-diagonally (table)
     )
+
+;detects sandwich
+(defun detect-sandwich (table)
+    (or (detect-sandwich-vertically table) (detect-sandwich-diagonally table)))
 
 ;;;;;;;;;;; Gameover detection functions
 

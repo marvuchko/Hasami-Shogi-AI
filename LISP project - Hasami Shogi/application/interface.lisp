@@ -3,8 +3,10 @@
 ;;;;;;;;;;; Console UI functions
 
 ;displays the current player in the console
-(defun show-current-player (player)
-    (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ player)))
+(defun show-current-player (currentState nextState player)
+    (if (equal currentState nextState)
+        (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ (plays-next player)))
+        (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ player))))
 
 ;displays the number of X figures
 (defun show-number-of-x-figures (table)
@@ -16,7 +18,7 @@
 
 ;displays how move should be played
 (defun show-move-examle ()
-    (format t "~aPrimer kako treba uneti potez: b 2 d 2 " #\tab))
+    (format t "~aPrimer kako treba uneti potez: b 2 d 2~% " #\tab))
 
 ;displays input message
 (defun show-user-input ()
@@ -40,11 +42,11 @@
     (format t "~%"))
 
 ;displays the entire console UI
-(defun show-ui (table nums player)
+(defun show-ui (currentState nextState nums player)
     (ext:run-shell-command "cls")
-    (show-table table nums)
+    (show-table nextState nums)
     (show-move-examle)
-    (show-number-of-x-figures table)
-    (show-number-of-o-figures table)
-    (show-current-player player)
+    (show-number-of-x-figures nextState)
+    (show-number-of-o-figures nextState)
+    (show-current-player currentState nextState player)
     (show-user-input))

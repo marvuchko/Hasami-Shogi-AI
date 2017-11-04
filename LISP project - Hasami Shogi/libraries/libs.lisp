@@ -68,6 +68,35 @@
     (if (null table) 0
         (+ (number-of-o-in-list (car table)) (number-of-o (cdr table)))))
 
+;calculates avaiable moves to the left of the selected figure recursively
+(defun avaiable-moves-left-rec (table fromI fromJ)
+    (if (> fromJ 0)
+        (if (equal '(-) (get-table-element table fromI (- fromJ 1)))
+            (append (list (list fromI (- fromJ 1))) (avaiable-moves-left-rec table fromI (- fromJ 1))))))
+
+;calculates avaiable moves to the right of the selected figure recursively
+(defun avaiable-moves-right-rec (table fromI fromJ)
+    (if (> (length table) fromJ)
+        (if (equal '(-) (get-table-element table fromI (+ fromJ 1)))
+            (append (list (list fromI (+ fromJ 1))) (avaiable-moves-right-rec table fromI (+ fromJ 1))))))
+
+;calculates avaiable moves above the selected figure recursively
+(defun avaiable-moves-top-rec (table fromI fromJ)
+    (if (> fromI 0)
+        (if (equal '(-) (get-table-element table (- fromI 1) fromJ))
+            (append (list (list (- fromI 1) fromJ)) (avaiable-moves-top-rec table (- fromI 1) fromJ)))))
+
+;calculates avaiable moves below the selected figure recursively
+(defun avaiable-moves-bottom-rec (table fromI fromJ)
+    (if (> (length table) fromI)
+        (if (equal '(-) (get-table-element table (+ fromI 1) fromJ))
+            (append (list (list (+ fromI 1) fromJ)) (avaiable-moves-bottom-rec table (+ fromI 1) fromJ)))))
+
+;finds sublist in a list
+(defun sublist-exsits (sub lst)
+    (if (not (null lst))
+        (or (equal sub (car lst)) (sublist-exsits sub (cdr lst)))))
+
 ;;;;;;;;;;; Recursive functions for some operations with numbers 
 
 ;creates a list of numbers from 1 to n recursively
