@@ -23,7 +23,7 @@
             ((and (> i 0) (<= i 2)) (list (create-o-row-rec n)))
             ((and (> i 2) (<= i (- n 2))) (list (create-free-row-rec n)))
             ((and (> i (- n 2)) (<= i n) (list (create-x-row-rec n))))) 
-    (create-table-rec n (1- i)))))
+            (create-table-rec n (1- i)))))
 
 ;displays the table recursively
 (defun show-table-rec (table numbers)
@@ -46,7 +46,7 @@
         (if (listp (car lst)) 
             (car lst) 
             (list (car lst)))
-        (append '() (get-list-element(cdr lst) (1- n)))))
+            (append '() (get-list-element(cdr lst) (1- n)))))
 
 ;calculates the number of X atoms in the list recursively
 (defun number-of-x-in-list (lst)

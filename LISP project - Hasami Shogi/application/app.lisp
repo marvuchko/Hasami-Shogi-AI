@@ -16,5 +16,4 @@
         (gameover '())
         ((if (equal currentState nextState)
             (game-loop gameover nextState (play-move nextState (next-figure figure)) figure player nums)
-            (game-loop gameover nextState (play-move nextState figure) (next-figure figure) (plays-next player) nums)))
-        ))
+            (game-loop gameover nextState (play-move nextState figure) (next-figure figure) (plays-next player) nums)))))

@@ -45,7 +45,7 @@
         (if (and 
             (equal (car (get-table-element table fromI (- fromJ 1))) (next-figure figure))
             (equal (car (get-table-element table fromI (- fromJ 2))) '-))
-        (list (list fromI (- fromJ 2))))))
+            (list (list fromI (- fromJ 2))))))
 
 ;creates the list of all avaiable moves to the right of the figure
 (defun avaiable-moves-right (table figure fromI fromJ)
@@ -54,7 +54,7 @@
         (if (and 
             (equal (car (get-table-element table fromI (+ fromJ 1))) (next-figure figure))
             (equal (car (get-table-element table fromI (+ fromJ 2))) '-))
-        (list (list fromI (+ fromJ 2))))))
+            (list (list fromI (+ fromJ 2))))))
 
 ;creates the list of all avaiable moves above the figure
 (defun avaiable-moves-top (table figure fromI fromJ)
@@ -63,7 +63,7 @@
         (if (and 
             (equal (car (get-table-element table (- fromI 1) fromJ)) (next-figure figure))
             (equal (car (get-table-element table (- fromI 2) fromJ)) '-))
-        (list (list (- fromI 2) fromJ)))))
+            (list (list (- fromI 2) fromJ)))))
 
 ;creates the list of all avaiable moves below the figure
 (defun avaiable-moves-bottom (table figure fromI fromJ)
@@ -72,7 +72,7 @@
         (if (and 
             (equal (car (get-table-element table (+ fromI 1) fromJ)) (next-figure figure))
             (equal (car (get-table-element table (+ fromI 2) fromJ)) '-))
-        (list (list (+ fromI 2) fromJ)))))
+            (list (list (+ fromI 2) fromJ)))))
 
 ;tests if the move is valid
 (defun is-valid-move (table figure fromI fromJ toI toJ)
