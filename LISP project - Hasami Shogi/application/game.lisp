@@ -9,9 +9,7 @@
 
 ;tests if input is out of bounds 
 (defun valid-bounds (table i j)
-    (and 
-        (and (< i (length table)) (>= i 0)) 
-        (and (< j (length table)) (>= j 0))))
+    (and (< i (length table)) (>= i 0)) (< j (length table)) (>= j 0))
 
 ;gets an element from the i-th row and j-th column of the table 
 (defun get-table-element (table i j)
@@ -77,7 +75,8 @@
 ;tests if the move is valid
 (defun is-valid-move (table figure fromI fromJ toI toJ)
     (and 
-        (sublist-exsits (list toI toJ) (list-of-avaiable-moves-for-figure table figure fromI fromJ))
+        (valid-bounds table fromI fromJ) (valid-bounds table toI toJ)
+        (sublist-exists (list toI toJ) (list-of-avaiable-moves-for-figure table figure fromI fromJ))
         (equal figure (car (get-table-element table fromI fromJ)))))
 
 ;user plays the move, user enters the coordinates using standard input

@@ -93,9 +93,9 @@
             (append (list (list (+ fromI 1) fromJ)) (avaiable-moves-bottom-rec table (+ fromI 1) fromJ)))))
 
 ;finds sublist in a list
-(defun sublist-exsits (sub lst)
+(defun sublist-exists (sub lst)
     (if (not (null lst))
-        (or (equal sub (car lst)) (sublist-exsits sub (cdr lst)))))
+        (or (equal sub (car lst)) (sublist-exists sub (cdr lst)))))
 
 ;;;;;;;;;;; Recursive functions for some operations with numbers 
 

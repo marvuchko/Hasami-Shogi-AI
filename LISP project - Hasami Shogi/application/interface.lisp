@@ -3,8 +3,8 @@
 ;;;;;;;;;;; Console UI functions
 
 ;displays the current player in the console
-(defun show-current-player (currentState nextState player)
-    (if (equal currentState nextState)
+(defun show-current-player (previousstate currentstate player)
+    (if (equal previousstate currentstate)
         (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ (plays-next player)))
         (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ player))))
 
@@ -42,11 +42,11 @@
     (format t "~%"))
 
 ;displays the entire console UI
-(defun show-ui (currentState nextState nums player)
+(defun show-ui (previousstate currentstate nums player)
     (ext:run-shell-command "cls")
-    (show-table nextState nums)
-    (show-move-examle)
-    (show-number-of-x-figures nextState)
-    (show-number-of-o-figures nextState)
-    (show-current-player currentState nextState player)
+    (show-table currentstate nums)
+    ;(show-move-examle)
+    (show-number-of-x-figures currentstate)
+    (show-number-of-o-figures currentstate)
+    (show-current-player previousstate currentstate player)
     (show-user-input))
