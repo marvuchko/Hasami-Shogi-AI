@@ -22,7 +22,7 @@
 
 ;displays initial game message
 (defun show-initial-message ()
-    (format t "~%~a   Ko igra prvi, 0-igrac igra pvi, 1-igrac igra drugi: " #\tab))
+    (format t "~%~a   Izaberite ko igra prvi,~%~a   0-igrac igra pvi, ~%~a   1-igrac igra drugi: " #\tab #\tab #\tab))
 
 ;displays message when loading a game
 (defun loading-message ()
