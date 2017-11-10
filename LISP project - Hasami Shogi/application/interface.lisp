@@ -5,48 +5,65 @@
 ;displays the current player in the console
 (defun show-current-player (previousstate currentstate player)
     (if (equal previousstate currentstate)
-        (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ (plays-next player)))
-        (format t "~%~%~aNa potezu je: IGRAC ~a" #\tab (1+ player))))
+        (format t "~a   Na potezu je: IGRAC ~a" #\tab (1+ (plays-next player)))
+        (format t "~a   Na potezu je: IGRAC ~a" #\tab (1+ player))))
 
-;displays the number of X figures
-(defun show-number-of-x-figures (table)
-    (format t "~%~aBroj X figurica je: ~a" #\tab (number-of-x table)))
-
-;displays the number of O figures
-(defun show-number-of-o-figures (table)
-    (format t "~%~aBroj O figurica je: ~a" #\tab (number-of-o table)))
+;displays the number of X and O figures
+(defun show-number-of-figures (table)
+    (format t "~%~a Broj X-a: ~a   Broj O-a: ~a" #\tab (number-of-x table) (number-of-o table)))
 
 ;displays how move should be played
-(defun show-move-examle ()
-    (format t "~aPrimer kako treba uneti potez: b 2 d 2~% " #\tab))
+(defun show-move-example ()
+    (format t "~%~%~a   Primer poteza: b 2 d 2~% " #\tab))
 
 ;displays input message
 (defun show-user-input ()
-    (format t "~%~%~aUnesi potez: " #\tab))
+    (format t "~%~%~a   Unesi potez: " #\tab))
 
 ;displays initial game message
 (defun show-initial-message ()
-    (format t "~%~aKo igra prvi, 0-igrac igra pvi, 1-igrac igra drugi: " #\tab))
+    (format t "~%~a   Ko igra prvi, 0-igrac igra pvi, 1-igrac igra drugi: " #\tab))
 
 ;displays message when loading a game
 (defun loading-message ()
     (ext:run-shell-command "cls")
-    (format t "~%~aUnesi dimenzije table: " #\tab))
+    (show-ascii-art)
+    (format t "~%~a   Unesi dimenzije table: " #\tab))
 
-;displays the table with column number indicators and row letter indicators
+;displays the table with column indicators and row letter indicators
 (defun show-table (table nums)
-    (format t "~%~a    " #\tab)
+    (format t "~%~a       " #\tab)
     (print-numbers nums)
     (format t "~%~%")
-    (show-table-rec table nums)
-    (format t "~%"))
+    (show-table-rec table nums))
+
+(defun show-ascii-art ()
+    (format t "                      
+~a _____                   _ 
+~a|  |  |___ ___ ___ _____|_|
+~a|     | .'|_ -| .'|     | |
+~a|__|__|__,|___|__,|_|_|_|_|  
+~a          _           _     
+~a      ___| |_ ___ ___|_|    
+~a     |_ -|   | . | . | |    
+~a     |___|_|_|___|_  |_|    
+~a                 |___|      
+~a ___________________________
+~a|___________________________|
+" #\tab #\tab #\tab #\tab #\tab #\tab #\tab #\tab #\tab #\tab #\tab))
+
+(defun end-of-interface ()
+    (format t "
+~a ___________________________
+~a|___________________________|" #\tab #\tab))
 
 ;displays the entire console UI
 (defun show-ui (previousstate currentstate nums player)
     (ext:run-shell-command "cls")
+    (show-ascii-art)
     (show-table currentstate nums)
-    ;(show-move-examle)
-    (show-number-of-x-figures currentstate)
-    (show-number-of-o-figures currentstate)
+    (show-number-of-figures currentstate)
+    (end-of-interface)
+    (show-move-example)
     (show-current-player previousstate currentstate player)
     (show-user-input))

@@ -29,7 +29,7 @@
 (defun show-table-rec (table numbers)
     (if (null table) '()
         (progn 
-            (format t "~a~a  ~a~%" #\tab (code-char (+ 64 (car numbers))) (car table))
+            (format t "~a   ~a  ~a~%" #\tab (code-char (+ 64 (car numbers))) (car table))
             (show-table-rec (cdr table) (cdr numbers)))))
 
 ;sets an element of the list recursively
@@ -117,4 +117,4 @@
 (defun char-to-index (ch)
     (cond
         ((< (char-code ch) (char-code #\a)) (- (char-code ch) (char-code #\A)))
-        (t (- (char-code ch) (char-code #\a)))))
+        ((>= (char-code ch) (char-code #\a)) (- (char-code ch) (char-code #\a)))))
